@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Browner Family — Descendants of Julius &amp; Dina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --paper-2:#efe9dc;
+    --ink:#23283a;
+    --ink-soft:#5c5747;
+    --brass:#9c7a3c;
+    --brass-soft:#c9b48e;
+    --claret:#7c3a45;
+    --line:#cbb890;
+    --shadow:rgba(38,32,20,.14);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:"EB Garamond",Georgia,serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 80% at 50% -10%, #fbf8f1 0%, var(--paper) 55%, var(--paper-2) 100%);
+    background-attachment:fixed;
+    line-height:1.4;
+    padding:0 clamp(14px,4vw,56px) 90px;
+  }
+
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    max-width:960px;margin:0 auto;
+    padding:clamp(38px,7vw,72px) 0 26px;
+    text-align:center;
+  }
+  .kicker{
+    font-family:"Cormorant Garamond",serif;
+    letter-spacing:.42em;text-transform:uppercase;
+    font-size:.72rem;color:var(--brass);font-weight:600;
+    margin:0 0 18px;padding-left:.42em;
+  }
+  .medallion{
+    display:inline-block;position:relative;
+    padding:22px clamp(24px,6vw,60px);
+  }
+  .medallion::before,.medallion::after{
+    content:"";position:absolute;left:8%;right:8%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--brass) 18%,var(--brass) 82%,transparent);
+  }
+  .medallion::before{top:0;}
+  .medallion::after{bottom:0;}
+  h1{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;font-style:normal;
+    font-size:clamp(2.5rem,7vw,4.4rem);
+    line-height:1.02;margin:0;color:var(--ink);
+  }
+  h1 .amp{font-style:italic;color:var(--claret);font-weight:500;}
+  h1 .sur{display:block;font-size:.42em;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--brass);font-weight:600;
+    margin-top:14px;padding-left:.34em;}
+  .subtitle{
+    font-style:italic;font-size:1.12rem;color:var(--ink-soft);
+    margin:20px auto 0;max-width:52ch;
+  }
+  .stat-row{
+    margin:24px auto 0;display:flex;gap:0;justify-content:center;
+    flex-wrap:wrap;max-width:560px;
+  }
+  .stat{padding:4px 22px;position:relative;}
+  .stat + .stat::before{content:"";position:absolute;left:0;top:14%;bottom:14%;width:1px;background:var(--brass-soft);}
+  .stat b{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;display:block;line-height:1;color:var(--claret);}
+  .stat span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);}
+
+  /* ---------- Controls ---------- */
+  .toolbar{
+    max-width:960px;margin:30px auto 6px;
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+    justify-content:center;
+  }
+  .search-wrap{position:relative;flex:1 1 320px;max-width:440px;}
+  .search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--brass);pointer-events:none;}
+  #search{
+    width:100%;font-family:"EB Garamond",serif;font-size:1.02rem;
+    padding:11px 14px 11px 40px;border:1px solid var(--brass-soft);
+    background:rgba(255,255,255,.5);color:var(--ink);border-radius:2px;
+    outline:none;transition:border-color .2s,box-shadow .2s;
+  }
+  #search:focus{border-color:var(--brass);box-shadow:0 0 0 3px rgba(156,122,60,.16);}
+  #search::placeholder{color:#a29a86;font-style:italic;}
+  .btn{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;font-size:.74rem;
+    padding:10px 16px;border:1px solid var(--brass-soft);
+    background:transparent;color:var(--ink-soft);cursor:pointer;
+    border-radius:2px;transition:all .18s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--brass);color:#fff;border-color:var(--brass);}
+  .count-note{width:100%;text-align:center;font-style:italic;color:var(--ink-soft);font-size:.9rem;min-height:1.2em;}
+
+  /* ---------- Legend ---------- */
+  .legend{
+    max-width:960px;margin:2px auto 14px;
+    display:flex;gap:16px 22px;justify-content:center;flex-wrap:wrap;
+    font-size:.78rem;color:var(--ink-soft);
+  }
+  .legend span{display:inline-flex;align-items:center;gap:7px;letter-spacing:.04em;}
+  .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.12);}
+
+  /* ---------- Branch panels ---------- */
+  main{max-width:1000px;margin:0 auto;}
+  .branch{
+    background:rgba(255,255,255,.42);
+    border:1px solid var(--brass-soft);
+    border-radius:3px;margin:20px 0;
+    box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 6px 22px -18px var(--shadow);
+    overflow:hidden;
+  }
+  .branch-head{
+    display:flex;align-items:baseline;gap:14px;cursor:pointer;
+    padding:18px clamp(16px,3vw,26px);
+    border-left:5px solid var(--gc,var(--brass));
+    user-select:none;
+  }
+  .branch-head:hover{background:rgba(156,122,60,.06);}
+  .branch-idx{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.5rem;color:var(--brass);min-width:1.4em;
+  }
+  .branch-title{font-family:"Cormorant Garamond",serif;font-size:clamp(1.5rem,3.4vw,2rem);font-weight:600;line-height:1.1;}
+  .branch-title .sp{font-style:italic;font-weight:500;color:var(--claret);font-size:.72em;}
+  .branch-meta{margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;align-self:center;}
+  .chev{transition:transform .25s;color:var(--brass);align-self:center;}
+  .branch.collapsed .chev{transform:rotate(-90deg);}
+  .branch.collapsed .branch-body{display:none;}
+  .branch-body{padding:6px clamp(14px,3vw,30px) 26px;}
+
+  /* ---------- Tree ---------- */
+  ul.tree,ul.tree ul{list-style:none;margin:0;padding:0;}
+  ul.tree{padding-top:4px;}
+  ul.tree ul{margin-left:6px;}
+  .tree li{position:relative;padding-left:26px;}
+  .tree li::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;
+    border-left:1px solid var(--line);
+  }
+  .tree li::after{
+    content:"";position:absolute;left:0;top:1.15em;width:18px;
+    border-top:1px solid var(--line);
+  }
+  .tree li:last-child::before{bottom:auto;height:1.15em;}
+  .tree > li{padding-left:6px;}
+  .tree > li::before,.tree > li::after{display:none;}
+
+  .node{
+    display:inline-flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+    padding:3px 4px;border-radius:2px;position:relative;
+    margin:1px 0;
+  }
+  .node .toggle{
+    cursor:pointer;color:var(--brass);font-size:.7rem;width:14px;
+    display:inline-block;text-align:center;margin-left:-4px;
+    transition:transform .2s;user-select:none;
+  }
+  li.closed > ul{display:none;}
+  li.closed > .node .toggle{transform:rotate(-90deg);}
+  .name{font-size:1.12rem;color:var(--ink);}
+  .g-6 .name{font-size:1.02rem;}
+  .node.has-kids > .name{font-weight:600;}
+  .spouse{font-style:italic;color:var(--claret);font-size:.92rem;}
+  .age{
+    font-family:"Cormorant Garamond",serif;font-weight:600;
+    font-size:.72rem;color:#fff;background:var(--brass);
+    border-radius:10px;padding:1px 8px;letter-spacing:.02em;
+    position:relative;top:-1px;
+  }
+  .note{font-style:italic;color:var(--ink-soft);font-size:.86rem;}
+  .gtag{
+    font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;border-radius:2px;padding:1px 5px;position:relative;top:-1px;
+    opacity:.9;
+  }
+  .unknown .name{color:#9a927e;font-style:italic;}
+
+  mark{background:#f3d98a;color:var(--ink);padding:0 2px;border-radius:2px;}
+  .dim{opacity:.28;}
+  .hit > .node{background:rgba(243,217,138,.35);}
+
+  footer{
+    max-width:820px;margin:56px auto 0;text-align:center;
+    font-style:italic;color:var(--ink-soft);font-size:.9rem;
+    border-top:1px solid var(--brass-soft);padding-top:22px;line-height:1.6;
+  }
+  footer b{font-style:normal;color:var(--brass);letter-spacing:.04em;}
+
+  @media (max-width:560px){
+    .tree li{padding-left:20px;}
+    .tree li::after{width:13px;}
+    .branch-meta{display:none;}
+    .name{font-size:1.05rem;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---------- Print ---------- */
+  @media print{
+    body{background:#fff;padding:0 8px;}
+    .toolbar,.legend .btn,.count-note,.chev,.node .toggle{display:none!important;}
+    .branch.collapsed .branch-body{display:block!important;}
+    li.closed > ul{display:block!important;}
+    .branch{break-inside:avoid;box-shadow:none;border-color:#bbb;background:#fff;}
+    .branch-head{break-after:avoid;}
+    .dim{opacity:1;}
+    a[href]:after{content:"";}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="kicker">A Six-Generation Descendant Chart</p>
+  <div class="medallion">
+    <h1>Julius <span class="amp">&amp;</span> Dina<span class="sur">Browner</span></h1>
+  </div>
+  <p class="subtitle">The family they began, traced through their children, grandchildren, and every generation since.</p>
+  <div class="stat-row">
+    <div class="stat"><b>6</b><span>Generations</span></div>
+    <div class="stat"><b id="peopleCount">—</b><span>Descendants &amp; Spouses</span></div>
+    <div class="stat"><b>7</b><span>Family Branches</span></div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search" type="search" placeholder="Search for a name…" autocomplete="off">
+  </div>
+  <button class="btn" id="expandAll">Expand all</button>
+  <button class="btn" id="collapseAll">Collapse branches</button>
+  <div class="count-note" id="countNote"></div>
+</div>
+
+<div class="legend" id="legend"></div>
+
+<main id="tree"></main>
+
+<footer>
+  Transcribed from three photographed pages of the family spreadsheet.
+  Names in <b>(parentheses)</b> are spouses;
+  entries marked <b>“?”</b> were left blank or uncertain in the source.
+  Worth a second look for spellings before it's shared widely.
+</footer>
+
+<script>
+/* ---------- Family data (Gen 1 = Julius & Dina Browner) ---------- */
+const FAMILY = {
+  name:"Julius & Dina", surname:"Browner",
+  kids:[
+    { name:"Anna Browner", sp:"Jack Levy; Wally", kids:[
+      { name:"Bernard Browner", sp:"Pearl", kids:[
+        { name:"Jerry Browner", sp:"Joanie", kids:[
+          { name:"Dina Browner", sp:"David Wienir" },
+          { name:"Tasha Bohlig", sp:"Brian", kids:[
+            { name:"Hudson Bohlig", note:"10" }
+          ]}
+        ]},
+        { name:"Anne Saliba", sp:"Lee", kids:[
+          { name:"Brian Saliba", sp:"Doris", kids:[ { name:"Deven Saliba", note:"15" } ]},
+          { name:"Brandon Saliba", sp:"Linnea; Ashly", kids:[ { name:"Sadie Saliba", note:"15" } ]}
+        ]}
+      ]}
+    ]},
+
+    { name:"Bertha Blatt", sp:"Ben", kids:[
+      { name:"Julius Blatt", sp:"Jewel", kids:[
+        { name:"Dana Blatt", sp:"Igor" },
+        { name:"David Blatt", sp:"Coleen", kids:[ { name:"Tristin" }, { name:"Garrett" } ]},
+        { name:"Rande Blatt" }
+      ]},
+      { name:"Perry Blatt", sp:"Anita; Linda", kids:[
+        { name:"Pam Pappas", sp:"Richard", kids:[
+          { name:"Danny Marks", sp:"Laura", kids:[ { name:"Waylon" } ]},
+          { name:"Doug Marks", sp:"Amanda", kids:[ { name:"Perri Marks", note:"5" }, { name:"Noa Marks", note:"1" } ]},
+          { name:"Elizabeth Marks", kids:[ { name:"Sophie" } ]},
+          { name:"Rebecca Marks" }
+        ]},
+        { name:"Kenneth Blatt" }
+      ]},
+      { name:"Stanley Blatt", sp:"Nina; Alexis", kids:[
+        { name:"Jeff Blatt", kids:[
+          { name:"Eliot Blatt" },
+          { name:"Andrew Blatt", sp:"Abbie", kids:[ { name:"Sloan Blatt", note:"2" }, { name:"Ben Blatt", note:"2" } ]}
+        ]},
+        { name:"Steven Blatt", sp:"Lizzy", kids:[ { name:"Hannah Blatt" }, { name:"Josh Blatt" } ]},
+        { name:"Wendy Einbund", sp:"Larry", kids:[
+          { name:"Michael Lindman", sp:"Kailee", note:"36", kids:[ { name:"Lyons Lindman", note:"2" } ]},
+          { name:"Matt Lindman", note:"31" },
+          { name:"Dillon Einbund", note:"Larry's son" },
+          { name:"Evan Einbund", note:"22" }
+        ]},
+        { name:"Amanda Blatt", sp:"Adam Stormoen", kids:[
+          { name:"Jack Carlson", note:"15" },
+          { name:"Ben Carlson", note:"14" },
+          { name:"Charlotte Stormoen", note:"5" }
+        ]}
+      ]}
+    ]},
+
+    { name:"Alexander Browner", sp:"Hilda", kids:[
+      { name:"David Browner", sp:"Francine; Cheri", kids:[
+        { name:"Stacy Browner", sp:"Justin" },
+        { name:"Jacqueline Gottlieb", sp:"Michael", kids:[ { name:"Asher Gottlieb", note:"19" }, { name:"Ryder Gottlieb", note:"15" } ]},
+        { name:"Alexandre Browner", sp:"Taylor" },
+        { name:"Adam Browner", sp:"Zuley", kids:[ { name:"Isabella Browner", note:"7" }, { name:"Julian Browner", note:"4" } ]}
+      ]},
+      { name:"Jeffrey Browner", kids:[
+        { name:"Lisa Browner", kids:[ { name:"? Son", unknown:true } ]},
+        { name:"Karen Greenspan", sp:"Mark", kids:[ { name:"Lacey Greenspan", note:"24" }, { name:"Marlee Greenspan" } ]}
+      ]},
+      { name:"Rebecca Gould", kids:[
+        { name:"Jonathan Gould", sp:"Emily", kids:[ { name:"Maelle Gould", note:"17" }, { name:"Eli Gould", note:"1" } ]},
+        { name:"Donna Gould" },
+        { name:"Mary Gould", kids:[ { name:"Heron" } ]}
+      ]}
+    ]},
+
+    { name:"Jerry Browner", sp:"Florence", kids:[
+      { name:"Dennis Browner", sp:"Judy", kids:[
+        { name:"Jerry Browner", kids:[
+          { name:"Haley", kids:[ { name:"? Daughter", unknown:true } ]}
+        ]}
+      ]},
+      { name:"Ellen Marchette", kids:[
+        { name:"Zachary Corefond", sp:"Becka", kids:[ { name:"Jackson", note:"4" }, { name:"Abigail" } ]}
+      ]}
+    ]},
+
+    { name:"Irving Browner", sp:"Anita", kids:[
+      { name:"Julius Browner", sp:"Barbara", kids:[
+        { name:"Ian Browner" },
+        { name:"Marc Browner", sp:"Maria", kids:[ { name:"Juliana", note:"12" } ]}
+      ]},
+      { name:"Arthur Browner", sp:"Barbara", kids:[
+        { name:"Alicia Kelley", kids:[ { name:"Sam" }, { name:"Rhett" }, { name:"Ezra" } ]},
+        { name:"Ivan Browner", sp:"Naoko", kids:[ { name:"Noah Browner" } ]},
+        { name:"Steven Browner", sp:"Monica" }
+      ]}
+    ]},
+
+    { name:"Claire Bloom", sp:"Nat; Cecil", kids:[
+      { name:"Doris Bloom", kids:[
+        { name:"Adrienne Corbett", kids:[
+          { name:"Julie Westberg", sp:"Brent", kids:[ { name:"Tristin Westberg" }, { name:"Vivenne Westberg" } ]},
+          { name:"Del Corbett" }
+        ]},
+        { name:"Barry Agnes" }
+      ]},
+      { name:"Gloria Starr", sp:"Joseph", kids:[
+        { name:"Lawrence Starr", sp:"Cindy", kids:[ { name:"Drew Starr", sp:"Rachel" } ]},
+        { name:"Clifford Starr", sp:"Freddie", kids:[
+          { name:"Jordana Starr", sp:"Mike" },
+          { name:"Britania Starr" },
+          { name:"Claire Starr" }
+        ]}
+      ]},
+      { name:"Marilyn Shechter", kids:[
+        { name:"Clarisse Shechter", sp:"John", kids:[
+          { name:"Owen McClain", sp:"Sarah", kids:[ { name:"Lillian McClain" }, { name:"Willa McClain" } ]},
+          { name:"Kevin McClain" },
+          { name:"Evan Posdamer" },
+          { name:"Nina Posdamer" }
+        ]},
+        { name:"Arlene Iosif", sp:"Germen", kids:[
+          { name:"Laura Maged", sp:"Alexis", kids:[ { name:"Jacob Maged" }, { name:"Samuel Maged" }, { name:"Matthew Maged" } ]}
+        ]},
+        { name:"Diana Garfield", kids:[ { name:"Stephanie Garfield" }, { name:"Jamie Garfield" } ]}
+      ]}
+    ]},
+
+    { name:"Daniel Browner" }
+  ]
+};
+
+/* ---------- Rendering ---------- */
+const GEN_COLORS = ["#7c3a45","#9c7a3c","#4f6d5a","#3f5a78","#8a5a3c","#5a4a72"];
+let peopleTotal = 0;
+
+function spouseHtml(sp){
+  if(!sp) return "";
+  const parts = sp.split(";").map(s=>s.trim()).filter(Boolean);
+  return ` <span class="spouse">(m. ${parts.join(" · ")})</span>`;
+}
+function nodeInner(p, gen){
+  peopleTotal++;
+  if(p.sp) peopleTotal += p.sp.split(";").filter(s=>s.trim()).length;
+  const hasKids = p.kids && p.kids.length;
+  let h = "";
+  if(hasKids) h += `<span class="toggle" aria-hidden="true">▾</span>`;
+  h += `<span class="name">${escapeHtml(p.name)}</span>`;
+  h += spouseHtml(p.sp);
+  if(p.note && !/^\d+$/.test(p.note)) h += ` <span class="note">— ${escapeHtml(p.note)}</span>`;
+  return `<span class="node ${hasKids?'has-kids':''} ${p.unknown?'unknown':''} g-${gen}">${h}</span>`;
+}
+function renderKids(kids, gen){
+  let h = "<ul>";
+  for(const k of kids){
+    const hasKids = k.kids && k.kids.length;
+    h += `<li class="${hasKids?'has-children':''}">`;
+    h += nodeInner(k, gen);
+    if(hasKids) h += renderKids(k.kids, gen+1);
+    h += "</li>";
+  }
+  return h + "</ul>";
+}
+
+function escapeHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+const treeEl = document.getElementById("tree");
+FAMILY.kids.forEach((branch,i)=>{
+  const gc = GEN_COLORS[1]; // gen-2 accent
+  const div = document.createElement("section");
+  div.className = "branch collapsed";
+  div.style.setProperty("--gc", GEN_COLORS[i % GEN_COLORS.length]);
+  const kidCount = countPeople(branch)-1;
+  div.innerHTML = `
+    <div class="branch-head" role="button" tabindex="0" aria-expanded="false">
+      <span class="branch-idx">${i+1}</span>
+      <span class="branch-title">${escapeHtml(branch.name)}${spouseHtml(branch.sp)}</span>
+      <span class="branch-meta">${kidCount>0? kidCount+" descendants" : "no descendants recorded"}</span>
+      <span class="chev">▾</span>
+    </div>
+    <div class="branch-body">
+      <ul class="tree"><li>${nodeInner(branch,2)}${branch.kids?renderKids(branch.kids,3):""}</li></ul>
+    </div>`;
+  treeEl.appendChild(div);
+});
+
+function countPeople(p){
+  let n = 1;
+  if(p.sp) n += p.sp.split(";").filter(s=>s.trim()).length;
+  if(p.kids) p.kids.forEach(k=> n += countPeople(k));
+  return n;
+}
+document.getElementById("peopleCount").textContent = peopleTotal;
+
+/* Legend */
+const legendEl = document.getElementById("legend");
+["Gen 1","Gen 2","Gen 3","Gen 4","Gen 5","Gen 6"].forEach((g,i)=>{
+  const s = document.createElement("span");
+  s.innerHTML = `<span class="dot" style="background:${GEN_COLORS[i]}"></span>${g}`;
+  legendEl.appendChild(s);
+});
+
+/* ---------- Interactions ---------- */
+// branch collapse
+document.querySelectorAll(".branch-head").forEach(h=>{
+  const toggle = ()=>{ h.parentElement.classList.toggle("collapsed");
+    h.setAttribute("aria-expanded", h.parentElement.classList.contains("collapsed")?"false":"true"); };
+  h.addEventListener("click", toggle);
+  h.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }});
+});
+// node collapse
+treeEl.addEventListener("click", e=>{
+  const t = e.target.closest(".toggle");
+  if(!t) return;
+  t.closest("li").classList.toggle("closed");
+});
+
+document.getElementById("expandAll").addEventListener("click",()=>{
+  document.querySelectorAll(".branch").forEach(b=>b.classList.remove("collapsed"));
+  document.querySelectorAll("li.closed").forEach(li=>li.classList.remove("closed"));
+});
+document.getElementById("collapseAll").addEventListener("click",()=>{
+  document.querySelectorAll(".branch").forEach(b=>b.classList.add("collapsed"));
+});
+
+/* ---------- Search ---------- */
+const search = document.getElementById("search");
+const countNote = document.getElementById("countNote");
+search.addEventListener("input", ()=>{
+  const q = search.value.trim().toLowerCase();
+  const allLi = treeEl.querySelectorAll("li");
+  const branches = document.querySelectorAll(".branch");
+  // reset
+  treeEl.querySelectorAll(".name").forEach(n=>{ n.innerHTML = n.textContent; });
+  allLi.forEach(li=>li.classList.remove("dim","hit"));
+  if(!q){
+    branches.forEach(b=>b.style.display="");
+    countNote.textContent = "";
+    return;
+  }
+  let hits = 0;
+  branches.forEach(b=>b.classList.remove("collapsed"));
+  allLi.forEach(li=>{
+    const nameEl = li.querySelector(":scope > .node .name");
+    const spEl = li.querySelector(":scope > .node .spouse");
+    const hay = (nameEl.textContent + " " + (spEl?spEl.textContent:"")).toLowerCase();
+    if(hay.includes(q)){
+      hits++;
+      li.classList.add("hit");
+      // highlight in name
+      const txt = nameEl.textContent;
+      const idx = txt.toLowerCase().indexOf(q);
+      if(idx>-1){
+        nameEl.innerHTML = escapeHtml(txt.slice(0,idx))+"<mark>"+escapeHtml(txt.slice(idx,idx+q.length))+"</mark>"+escapeHtml(txt.slice(idx+q.length));
+      }
+      // reveal ancestors
+      let p = li.parentElement.closest("li");
+      while(p){ p.classList.remove("closed","dim"); p.classList.add("keep"); p = p.parentElement.closest("li"); }
+    }
+  });
+  // dim non-matching branches / leaves without hits
+  branches.forEach(b=>{
+    const anyHit = b.querySelector(".hit, .keep");
+    b.style.display = anyHit ? "" : "none";
+  });
+  allLi.forEach(li=>{
+    if(!li.classList.contains("hit") && !li.classList.contains("keep")) li.classList.add("dim");
+    li.classList.remove("keep");
+  });
+  countNote.textContent = hits ? `${hits} match${hits>1?"es":""} found` : "No one by that name — try a different spelling.";
+});
+</script>
+</body>
+</html>
