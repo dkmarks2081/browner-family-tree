@@ -104,15 +104,6 @@
   .btn:hover{background:var(--brass);color:#fff;border-color:var(--brass);}
   .count-note{width:100%;text-align:center;font-style:italic;color:var(--ink-soft);font-size:.9rem;min-height:1.2em;}
 
-  /* ---------- Legend ---------- */
-  .legend{
-    max-width:960px;margin:2px auto 14px;
-    display:flex;gap:16px 22px;justify-content:center;flex-wrap:wrap;
-    font-size:.78rem;color:var(--ink-soft);
-  }
-  .legend span{display:inline-flex;align-items:center;gap:7px;letter-spacing:.04em;}
-  .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.12);}
-
   /* ---------- Branch panels ---------- */
   main{max-width:1000px;margin:0 auto;}
   .branch{
@@ -245,7 +236,6 @@
   <div class="count-note" id="countNote"></div>
 </div>
 
-<div class="legend" id="legend"></div>
 
 <main id="tree"></main>
 
@@ -382,7 +372,6 @@ const FAMILY = {
 };
 
 /* ---------- Rendering ---------- */
-const GEN_COLORS = ["#7c3a45","#9c7a3c","#4f6d5a","#3f5a78","#8a5a3c","#5a4a72"];
 let peopleTotal = 0;
 
 function spouseHtml(sp){
@@ -417,10 +406,8 @@ function escapeHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>'
 
 const treeEl = document.getElementById("tree");
 FAMILY.kids.forEach((branch,i)=>{
-  const gc = GEN_COLORS[1]; // gen-2 accent
   const div = document.createElement("section");
   div.className = "branch collapsed";
-  div.style.setProperty("--gc", GEN_COLORS[i % GEN_COLORS.length]);
   const kidCount = countPeople(branch)-1;
   div.innerHTML = `
     <div class="branch-head" role="button" tabindex="0" aria-expanded="false">
@@ -442,14 +429,6 @@ function countPeople(p){
   return n;
 }
 document.getElementById("peopleCount").textContent = peopleTotal;
-
-/* Legend */
-const legendEl = document.getElementById("legend");
-["Gen 1","Gen 2","Gen 3","Gen 4","Gen 5","Gen 6"].forEach((g,i)=>{
-  const s = document.createElement("span");
-  s.innerHTML = `<span class="dot" style="background:${GEN_COLORS[i]}"></span>${g}`;
-  legendEl.appendChild(s);
-});
 
 /* ---------- Interactions ---------- */
 // branch collapse
